@@ -1,0 +1,21 @@
+body {
+  margin: 0;
+}
+
+canvas {
+  display: block;
+  background-color: black;
+}
+
+.wrapper {
+  margin: auto;
+  width: 1200px;
+}
+
+.container {
+  padding-top: 25px;
+}
+
+.spritesheet {
+  display: none;
+}
