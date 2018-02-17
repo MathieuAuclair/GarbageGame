@@ -16,6 +16,6 @@ canvas {
   padding-top: 25px;
 }
 
-.spritesheet {
+#spritesheet {
   display: none;
 }
