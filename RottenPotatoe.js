@@ -26,8 +26,20 @@ function Renderer(){
     context.fillStyle = gradient;
     context.fillRect(rectangle.offSetX, rectangle.offSetY, rectangle.width, rectangle.height);
   },
-  this.drawImage = function(){
-
+  this.drawSprite = function(sprite){
+    context.drawImage(sprite.image,
+                      sprite.clipping.x,
+                      sprite.clipping.y,
+                      sprite.size.x,
+                      sprite.size.y,
+                      sprite.offSet.x,
+                      sprite.offSet.y,
+                      sprite.stretch.x,
+                      sprite.stretch.y
+                    );
+  },
+  this.drawImage = function(img, offSet){
+    context.drawImage(img, offSet.x, offSet.y);
   },
   this.drawUiText = function(offSet, text, color, font){
     drawUi(color, font);
