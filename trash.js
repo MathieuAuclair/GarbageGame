@@ -9,14 +9,18 @@ function GameThread(clockSpeed){
 		actions.push(action);
 	},
 	this.unsubscribe = function(action){
+		context.clearRect(0, 0, canvas.width, canvas.height);
 		for(i=0; i<actions.length; i++){
 			actions[i].func();
 		}
 	}
 }
 
+var renderer = new Renderer();
+var rectangle = new Rectangle(100, 100, 200, 200);
+
 var test = new DictionaryIndex('logger', function(){
-	console.log('Clock');
+	renderer.drawStrokeUiText(new Vector2d(100, 100), 'this is a working renderer', '#FF0000', '50px verdana');
 });
 
 var gameThread = new GameThread(100);

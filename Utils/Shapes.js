@@ -8,7 +8,7 @@ function Rectangle(width, height, offSetX, offSetY){
 function Circle(radius, offSetX, offSetY){
   this.radius = radius,
   this.offSetX = offSetX,
-  this.offSetY = offSetY,
+  this.offSetY = offSetY
 }
 
 function Shape(vertex){
