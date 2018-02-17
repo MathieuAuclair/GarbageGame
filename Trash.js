@@ -30,10 +30,15 @@ var rectangle = new Rectangle(100, 100, 200, 200);
 var sprite = new Sprite(spritesheet, new Vector2d(50, 50), new Vector2d(50, 50), new Vector2d(100, 250));
 
 //Event
+var canvasCleaner = new DictionaryIndex('canvasCleaner', function (){
+	renderer.clearCanvas();
+});
+
 var test = new DictionaryIndex('logger', function(){
 	renderer.drawStrokeUiText(new Vector2d(100, 100), 'this is a working renderer', '#FF0000', '50px verdana');
 	renderer.drawSprite(sprite);
 });
 
 //Suscribe
+gameThread.suscribe(canvasCleaner);
 gameThread.suscribe(test);

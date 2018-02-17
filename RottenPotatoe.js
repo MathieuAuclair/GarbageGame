@@ -49,5 +49,8 @@ function Renderer(){
     drawUi(color, font);
     context.strokeStyle = color;
     context.strokeText(text, offSet.x, offSet.y);
+  },
+  this.clearCanvas = function(){
+    context.clearRect(0, 0, canvas.width, canvas.height);
   }
 }
