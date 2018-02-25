@@ -3,22 +3,24 @@ var context = canvas.getContext('2d');
 
 var height = canvas.height;
 var width = canvas.width;
-var mouseClicked = false, mouseReleased = true;
 
 function onMouseClick(e) {
-    mouseClicked = !mouseClicked;
-    console.log('canvas clicked');
+  var clickArea = canvas.getBoundingClientRect();
+  console.log((e.clientX - clickArea.left) + " " + (e.clientY - clickArea.top));
 }
 
-function onMouseMove(e) {
-    if (mouseClicked) {
-        context.beginPath();
-        context.arc(e.clientX, e.clientY, 7.5, 0, Math.PI * 2, false);
-        context.lineWidth = 5;
-        context.strokeStyle = "#fff";
-        context.stroke();
-    }
+function ClickManager(name, clickBox){
+  var clickBoxes = [];
+  this.suscribeClickBox = function(){
+     clickBoxes.push(new DictionaryIndex(name, clickBox))
+  },
+  this.unsubscribeClickBox = function(name){
+     for(i=0; i<clickBoxes.length; i++){
+       if(clickBoxes[i].name == name){
+         clickBoxes.splice(i,1);
+       }
+     }
+  }
 }
 
-document.addEventListener("click", onMouseClick, false);
-document.addEventListener("mousemove", onMouseMove, false);
+canvas.addEventListener("click", onMouseClick, false);
