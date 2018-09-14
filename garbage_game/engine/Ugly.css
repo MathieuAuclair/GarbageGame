@@ -4,12 +4,13 @@ body {
 
 canvas {
   display: block;
+  margin: auto;
   background-color: black;
 }
 
 .wrapper {
   margin: auto;
-  width: 1200px;
+  width: 100%;
 }
 
 .container {
@@ -17,5 +18,9 @@ canvas {
 }
 
 #spritesheet {
+  display: none;
+}
+
+img{
   display: none;
 }
