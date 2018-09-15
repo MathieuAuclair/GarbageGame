@@ -1,22 +1,24 @@
+/**
+ * @return {boolean}
+ */
+function checkCircleCollisions(circle, circleCollection) {
+    let circles =  circleCollection.getAll();
+    for (let i = 0; i < circles.length; i++) {
+        let dx = circle.offSetX - circles[i].offSetX;
+        let dy = circle.offSetY - circles[i].offSetY;
+        let distance = Math.sqrt(dx * dx + dy * dy);
 
-function CircleCollider2d(circle){
-    var circle1 = {radius: 20, x: 5, y: 5};
-    var circle2 = {radius: 12, x: 10, y: 5};
-
-    var dx = circle1.x - circle2.x;
-    var dy = circle1.y - circle2.y;
-    var distance = Math.sqrt(dx * dx + dy * dy);
-
-    if (distance < circle1.radius + circle2.radius) {
-        // collision détectée !
+        if (distance < circle.radius + circles[i].radius)
+            return true;
     }
+    return false;
 }
 
-function ShapeCollider2d(shape){
+function ShapeCollider2d(shape) {
     /*TODO implement*/
 }
 
-function RectangleCollider2d(rectangle){
+function RectangleCollider2d(rectangle) {
     var rect1 = {x: 5, y: 5, width: 50, height: 50}
     var rect2 = {x: 20, y: 10, width: 10, height: 10}
 
@@ -37,7 +39,7 @@ function RectangleCollider2d(rectangle){
     }
 }
 
-function quadTree(){
+function quadTree() {
     const bounds = {
         x: 0,
         y: 0,
@@ -49,10 +51,10 @@ function quadTree(){
 
 //insert a random point
     quad.insert({
-        x:12,
-        y:25,
-        height:10,
-        width:25
+        x: 12,
+        y: 25,
+        height: 10,
+        width: 25
     });
 
     const items = quad.retrieve({x: 11, y: 20, height: 10, width: 20});
