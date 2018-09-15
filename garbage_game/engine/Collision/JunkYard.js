@@ -1,7 +1,7 @@
 /**
  * @return {boolean}
  */
-function checkCircleCollisions(circle, circleCollection) {
+function checkCircleCollisions(/*Circle*/circle, /*Collection*/circleCollection) {
     let circles = circleCollection.getAll();
     for (let i = 0; i < circles.length; i++) {
         let dx = circle.offSetX - circles[i].offSetX;
@@ -17,7 +17,7 @@ function checkCircleCollisions(circle, circleCollection) {
 /**
  * @return {boolean}
  */
-function checkRectangleCollision(rectangle, rectangleCollection) {
+function checkRectangleCollision(/*Rectangle*/rectangle, /*Collection*/rectangleCollection) {
     let rectangles = rectangleCollection.getAll();
     for (let i = 0; i < rectangles.length; i++) {
         if (rectangle.offSetX < rectangles[i].offSetX + rectangles[i].width &&
@@ -30,23 +30,44 @@ function checkRectangleCollision(rectangle, rectangleCollection) {
     return false;
 }
 
+function checkDynamicBodyCollision(/*Rectangle*/rectangle, /*function*/action) {
+    let radiusBox = Math.sqrt(Math.pow(rectangle.width / 2, 2) + Math.pow(rectangle.height / 2, 2));
+    let circleCollider = new Circle(
+        radiusBox,
+        rectangle.width / 2 + rectangle.offSetX,
+        rectangle.height / 2 + rectangle.offSetY
+    );
+
+    if (checkCircleCollisions(circleCollider, circleColliderCollection)) {
+        let rectangleCollider = new Rectangle(
+            rectangle.width,
+            rectangle.height,
+            rectangle.offSetX,
+            rectangle.offSetY
+        );
+
+        if (checkRectangleCollision(rectangleCollider, rectangleColliderCollection)) {
+            action();
+        }
+    }
+}
+
 /**
  * @return {boolean}
  */
-function checkShapeCollision(shape, shapeCollection) {
+function checkShapeCollision(/*Shape*/shape, /*Collection*/shapeCollection) {
     /*TODO implement*/
 }
 
 function quadTree() {
-    const bounds = {
+    /*TODO implement*/
+ /*   const bounds = {
         x: 0,
         y: 0,
         width: canvas.width,
         height: canvas.height
     };
-
     const quad = new QuadTree(bounds);
-
 //insert a random point
     quad.insert({
         x: 12,
@@ -54,7 +75,6 @@ function quadTree() {
         height: 10,
         width: 25
     });
-
-    const items = quad.retrieve({x: 11, y: 20, height: 10, width: 20});
+    const items = quad.retrieve({x: 11, y: 20, height: 10, width: 20});*/
 }
 

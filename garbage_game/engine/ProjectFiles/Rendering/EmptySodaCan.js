@@ -61,3 +61,4 @@ const playerSprite = new Sprite(
     new Vector2d(100, canvas.height - 150), //offset
     new Vector2d(70, 70), //stretch
 );
+

@@ -13,10 +13,10 @@ function GameThread(clockSpeed) {
             }   
         }
         return false;
-    }
-    this.subscribe = function (action) {
+    },
+    this.subscribe = function (/*DictionaryIndex*/action) {
         actions.push(action);
-    };
+    },
     this.unsubscribe = function (action) {
         for (var i = 0; i < actions.length; i++) {
             if (actions[i].name === action) {
