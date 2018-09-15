@@ -1,9 +1,32 @@
 stringLastMovement = "No stats to show";
 
+let radiusCar = Math.sqrt(Math.pow(car.stretch.x / 2, 2) + Math.pow(car.stretch.y / 2, 2));
+let radiusPlayer = Math.sqrt(Math.pow(playerSprite.stretch.x / 2, 2) + Math.pow(playerSprite.stretch.y / 2, 2));
+stringLastMovement = radiusPlayer;
+
 const textRenderingTask = new DictionaryIndex('logger', function () {
     renderer.drawUiText(new Vector2d(25, (canvas.height - 10)), stringLastMovement, 'white', '20px impact');
     renderer.drawUiText(new Vector2d(25, 60), 'A garbage game for', 'white', '50px impact');
     renderer.drawUiText(new Vector2d(25, 120), 'a garbage soldier', 'white', '50px impact');
+});
+
+const backgroundRenderingTask = new DictionaryIndex('background', function () {
+    renderer.drawSprite(background);
+    renderer.drawSprite(texture_grass);
+    renderer.drawSprite(foreground_detail);
+    renderer.drawSprite(foreground_decoration);
+    renderer.drawSprite(foreground);
+    renderer.drawSprite(car);
+
+    renderer.drawCircleStroke(
+      new Circle(radiusCar, car.stretch.x/2 + car.offSet.x, car.stretch.y/2 + car.offSet.y),
+        "#FFFF00"
+    );
+
+    renderer.drawRectangleStroke(
+        new Rectangle(car.stretch.x, car.stretch.y, car.offSet.x, car.offSet.y),
+        "#FF8800"
+    )
 });
 
 const animator = new DictionaryIndex("animator", function () {
@@ -14,10 +37,6 @@ const animator = new DictionaryIndex("animator", function () {
     }
 });
 
-/*Get radius for check circle*/
-let radius = Math.sqrt(Math.pow(playerSprite.stretch.x / 2, 2) + Math.pow(playerSprite.stretch.y / 2, 2));
-stringLastMovement = radius;
-
 const characterRenderingTask = new DictionaryIndex('button', function () {
     renderer.drawSprite(playerSprite);
 
@@ -27,7 +46,7 @@ const characterRenderingTask = new DictionaryIndex('button', function () {
     );
 
     renderer.drawCircleStroke(
-        new Circle(radius, playerSprite.stretch.x / 2 + playerSprite.offSet.x, playerSprite.stretch.y / 2 + playerSprite.offSet.y),
+        new Circle(radiusPlayer, playerSprite.stretch.x / 2 + playerSprite.offSet.x, playerSprite.stretch.y / 2 + playerSprite.offSet.y),
         "#00FF00"
     );
 });
