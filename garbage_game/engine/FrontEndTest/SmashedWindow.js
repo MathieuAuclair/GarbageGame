@@ -7,7 +7,7 @@ describe("GameThread", function () {
             var isRunning = false;
 
             var thread = new GameThread(100);
-            thread.suscribe(
+            thread.subscribe(
                 new DictionaryIndex("test", function () {
                     isRunning = true;
                 })
@@ -24,7 +24,7 @@ describe("GameThread", function () {
             var isRunning = true;
 
             var thread = new GameThread(100);
-            thread.suscribe(
+            thread.subscribe(
                 new DictionaryIndex("test", function () {
                     isRunning = true;
                 })

@@ -14,7 +14,7 @@ function GameThread(clockSpeed) {
         }
         return false;
     }
-    this.suscribe = function (action) {
+    this.subscribe = function (action) {
         actions.push(action);
     };
     this.unsubscribe = function (action) {
