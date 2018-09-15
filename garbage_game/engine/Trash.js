@@ -1,6 +1,7 @@
 let stringLastMovement = "No stats to show";
 
 let circleColliderCollection = new Collection();
+let rectangleColliderCollection = new Collection();
 
 let radiusCar = Math.sqrt(Math.pow(car.stretch.x / 2, 2) + Math.pow(car.stretch.y / 2, 2));
 let radiusPlayer = Math.sqrt(Math.pow(playerSprite.stretch.x / 2, 2) + Math.pow(playerSprite.stretch.y / 2, 2));
@@ -10,6 +11,13 @@ circleColliderCollection.add(
     new DictionaryIndex(
         "car",
         new Circle(radiusCar, car.stretch.x / 2 + car.offSet.x, car.stretch.y / 2 + car.offSet.y),
+    )
+);
+
+rectangleColliderCollection.add(
+    new DictionaryIndex(
+        "car",
+        new Rectangle(car.stretch.x, car.stretch.y, car.offSet.x, car.offSet.y)
     )
 );
 
@@ -59,14 +67,25 @@ const characterRenderingTask = new DictionaryIndex('button', function () {
         "#00FF00"
     );
 
-    stringLastMovement = checkCircleCollisions(
-        new Circle(
-            radiusPlayer,
-            playerSprite.stretch.x / 2 + playerSprite.offSet.x,
-            playerSprite.stretch.y / 2 + playerSprite.offSet.y
-        ),
-        circleColliderCollection
-    ).toString();
+    stringLastMovement = (
+        checkCircleCollisions(
+            new Circle(
+                radiusPlayer,
+                playerSprite.stretch.x / 2 + playerSprite.offSet.x,
+                playerSprite.stretch.y / 2 + playerSprite.offSet.y
+            ),
+            circleColliderCollection
+        ).toString() +
+        checkRectangleCollision(
+            new Rectangle(
+                playerSprite.stretch.x,
+                playerSprite.stretch.y,
+                playerSprite.offSet.x,
+                playerSprite.offSet.y
+            ),
+            rectangleColliderCollection
+        ).toString()
+    );
 });
 
 //Subscribe events
