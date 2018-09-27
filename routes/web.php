@@ -11,6 +11,5 @@
 |
 */
 
-Route::get('/', function () {
-    return view('game');
-});
+Auth::routes();
+Route::get('/', 'HomeController@index')->name('home');
