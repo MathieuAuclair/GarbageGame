@@ -37,11 +37,11 @@ contributions are welcome! This project is just for fun, send a pull request and
 
 **all script names must be a trash related name**
 
-* [ x ] find trash name to all script
-* [ x ] add player controller
-* [ x ] add a renderer
-* [ x ] add collision 
-* [ x ]
+* [x] find trash name to all script
+* [x] add player controller
+* [x] add a renderer
+* [x] add collision 
+* [x]
 * [ ] fix circle collider
 * [ ] fix collisions movement restriction
 * [ ]  improve collision system
