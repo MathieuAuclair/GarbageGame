@@ -41,7 +41,6 @@ contributions are welcome! This project is just for fun, send a pull request and
 * [x] add player controller
 * [x] add a renderer
 * [x] add collision 
-* [x]
 * [ ] fix circle collider
 * [ ] fix collisions movement restriction
 * [ ]  improve collision system
