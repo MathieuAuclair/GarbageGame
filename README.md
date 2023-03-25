@@ -2,6 +2,21 @@
 
 Side project game engine using canvas in HTML5.
 
+## Launch
+
+Begin with running the project!
+
+```bash
+# Chrome 
+google-chrome index.html
+
+# Firefox
+firefox index.html
+```
+
+Then use VS Code to edit the content, the game files are in `./frontend/project-files/**`. If you add new scripts or image don't forget to add them to `./frontend/index.html`. Engine scripts are in the header, game script are at the end of the body. 
+> Note that the order of the gameobject in which you reference in `index.html` represent the layer of your object to the renderer.
+
 ## Vision
 
 Create a game engine to allow devs a technical alternative for online game development. Ideally with an online component/toolbox to deploy massive scale games using a sass hosting in-house platform. Ideally the devops sass would be a paid platform tailored to this engine, with an asset shop. 
