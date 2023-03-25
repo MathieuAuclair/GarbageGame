@@ -37,13 +37,9 @@ function processRectangleCollider(collider, impactColliders, action) {
 function getCircleColliderFromRectangle(rectangle) {
   const radiusBox = Math.sqrt(
     Math.pow(rectangle.width / 2, 2) + Math.pow(rectangle.height / 2, 2)
-  ); 
-
-  return new Circle(
-    radiusBox,
-    rectangle.offSetX,
-    rectangle.offSetY
   );
+
+  return new Circle(radiusBox, rectangle.offSetX, rectangle.offSetY);
 }
 
 /**
@@ -54,15 +50,17 @@ function checkCircleCollisions(circle, colliders) {
     const dx = circle.offSetX - colliders[i].offSetX;
     const dy = circle.offSetY - colliders[i].offSetY;
     const distance = Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2));
-    
+
     let targetColliderRadius = colliders[i].radius;
 
-    if(!targetColliderRadius){ // is circle collider?
-      targetColliderRadius = getCircleColliderFromRectangle(colliders[i]).radius;
+    if (!targetColliderRadius) {
+      // is circle collider?
+      targetColliderRadius = getCircleColliderFromRectangle(
+        colliders[i]
+      ).radius;
     }
 
     if (distance < circle.radius + targetColliderRadius) {
-      console.log("CIRCLE DETECT");
       return true;
     }
   }
@@ -81,9 +79,9 @@ function checkRectangleCollision(rectangle, colliders) {
       rectangle.offSetY < colliders[i].offSetY + colliders[i].height &&
       rectangle.height + rectangle.offSetY > colliders[i].offSetY
     ) {
-      console.log("RECT DETECT");
       return true;
     }
   }
+
   return false;
 }
